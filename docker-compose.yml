@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+
+  server:
+    build:
+      context: .
+      args:
+        NEW_USER: ${NEW_USER}
+        ROOT_PWD: ${ROOT_PWD}
+    env_file:
+        - .env
+    image: "jeedom4_env:$VERSION"
+    container_name: jeedom4-docker
+    restart: "$RESTART"
+    privileged: true
+    tty: true
+    hostname: jeedom4
+    #OPTIONAL : If you need to mount USB devices (RFX, Zwave ...), add it all here.
+    #devices:
+    #  - "/dev/ttyACM0:/dev/ttyACM0"
+    volumes:
+       - "www:/var/www/html"
+       - "ssl:/etc/letsencrypt"
+       - "apache:/etc/apache2/sites-enabled"
+       - "db:/var/lib/mysql"
+    #OPTIONAL : You can fixed your container mac_address if required
+    #mac_address: INSERT_YOUR_MAC_HERE
+
+# Attach jeedom container to macvlan network created BEFORE
+#networks:
+#  default:
+#    external:
+#        name: INSERT_YOUR_MACVLAN_NAME_HERE
+
+volumes:
+    www:
+    ssl:
+    apache:
+    db:

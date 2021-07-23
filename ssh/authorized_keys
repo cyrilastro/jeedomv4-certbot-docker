@@ -1,1 +1,2 @@
-
+# Insert here your ssh publickey to remotely connect to the jeedom container
+# Publickey will be copied into /home/YOUR_NEW_USER/.ssh folder, NEW_USER variable defined into .env file.

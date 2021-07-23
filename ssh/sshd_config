@@ -1,1 +1,2 @@
-
+# Insert here your own sshd_config settings
+# In order to enable publickey authentication, UsePAM to be set to yes
